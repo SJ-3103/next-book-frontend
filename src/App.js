@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { Component } from "react"
+import { Switch, Route } from "react-router-dom"
 
-import Home from "./Home";
-import About from "./About";
-import Register from "./Register";
-import Login from "./LogIn";
-import BookDetail from "./BookDetail";
+import Home from "./Home"
+import About from "./About"
+import Register from "./Register"
+import Login from "./LogIn"
+import BookDetail from "./BookDetail"
 
 export default class App extends Component {
   render() {
@@ -17,6 +17,6 @@ export default class App extends Component {
         <Route path="/login" component={Login}></Route>
         <Route path="/book/:bookId/:bookSection" component={BookDetail}></Route>
       </Switch>
-    );
+    )
   }
 }

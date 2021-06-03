@@ -1,45 +1,42 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./navbar.scss";
-import axios from "axios";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import "./navbar.scss"
+import axios from "axios"
 
 export default class Navbar extends Component {
   state = {
     isLoggedIn: false,
-    username: null,
-  };
+    username: null
+  }
 
   componentDidMount = () => {
     axios
-      .get(
-        "http://localhost:5000/api/login",
-        { withCredentials: false },
-        { "Access-Control-Allow-Credentials": true }
-      )
+      .get("http://localhost:5000/api/login", { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data)
         response.data.cookie
           ? this.setState({
               isLoggedIn: true,
+              username: response.data.email_id
             })
           : this.setState({
-              isLoggedIn: false,
-            });
+              isLoggedIn: false
+            })
       })
-      .catch((errors) => console.log(errors));
-  };
+      .catch((errors) => console.log(errors))
+  }
 
   handleLogout = async () => {
     await axios
-      .get("http://localhost:5000/api/logout")
+      .get("http://localhost:5000/api/logout", { withCredentials: true })
       .then((data) => {
-        console.log(data);
+        console.log(data)
         this.setState({
-          isLoggedIn: false,
-        });
+          isLoggedIn: false
+        })
       })
-      .catch((errors) => console.log(errors));
-  };
+      .catch((errors) => console.log(errors))
+  }
 
   render() {
     return (
@@ -75,6 +72,6 @@ export default class Navbar extends Component {
           </ul>
         </nav>
       </header>
-    );
+    )
   }
 }

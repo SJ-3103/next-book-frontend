@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from "axios"
 
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
-import "../components/book.scss";
+import "../components/book.scss"
 
 export default class BookList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       arr: [],
-      loading: true,
-    };
+      loading: true
+    }
   }
 
   componentDidMount = async () => {
@@ -19,23 +19,23 @@ export default class BookList extends Component {
       .get("http://localhost:5000/api/" + this.props.name)
 
       .then(({ data, keys, arr }) => {
-        keys = Object.keys(data);
-        arr = [];
+        keys = Object.keys(data)
+        arr = []
 
         keys.forEach((element) => {
-          arr.push(JSON.parse(data[element]));
-        });
+          arr.push(JSON.parse(data[element]))
+        })
 
         this.setState({
           arr: arr,
-          loading: false,
-        });
+          loading: false
+        })
       })
 
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   render() {
     return (
@@ -53,26 +53,26 @@ export default class BookList extends Component {
                   average_rating={data.average_rating}
                   book_section={this.props.name}
                 />
-              );
+              )
             })
           ) : (
             <div>Loading....</div>
           )}
         </div>
       </div>
-    );
+    )
   }
 }
 
 class BookBlock extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       title: this.props.title,
       author: this.props.author,
       average_rating: this.props.average_rating,
-      class_name: this.props.class_name,
-    };
+      class_name: this.props.class_name
+    }
   }
   render() {
     return (
@@ -86,6 +86,6 @@ class BookBlock extends Component {
           </div>
         </Link>
       </div>
-    );
+    )
   }
 }

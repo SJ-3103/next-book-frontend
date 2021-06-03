@@ -1,63 +1,59 @@
-import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
-import "./register.scss";
-import axios from "axios";
-import Navbar from "./components/Navbar";
+import React, { Component } from "react"
+import { Redirect, Link } from "react-router-dom"
+import "./register.scss"
+import axios from "axios"
+import Navbar from "./components/Navbar"
+
 export default class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       redirect: null,
       email: "",
       password: "",
       errors: {
         email: "",
-        password: "",
-      },
-    };
+        password: ""
+      }
+    }
   }
 
-  handleEmail = (event) => {
+  handleInputChange = (event) => {
+    const value = event.target.value
+    const name = event.target.name
     this.setState({
-      email: event.target.value,
-    });
-  };
-
-  handlePassword = (event) => {
-    this.setState({
-      password: event.target.value,
-    });
-  };
+      [name]: value
+    })
+  }
 
   handleErrors = (errors) => {
     // to extract errors in the state and apply forEach on it
-    console.log(errors);
-  };
+    console.log(errors)
+  }
 
   handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    // to be completed
     axios
       .post(
         "http://localhost:5000/api/login",
         {
-          emailId: this.state.email,
-          password: this.state.password,
+          email_id: this.state.email,
+          password: this.state.password
         },
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response);
+        console.log(response)
       })
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
+      return <Redirect to={this.state.redirect} />
     }
     return (
       <div className="body-c">
@@ -66,18 +62,20 @@ export default class Login extends Component {
           <h3>Login</h3>
           <form id="register-form" onSubmit={this.handleSubmit}>
             <input
+              name="email"
               value={this.state.email}
               type="text"
-              onChange={this.handleEmail}
+              onChange={this.handleInputChange}
               placeholder="Enter Email"
               className="form-input"
             />
             <p id="errors">{this.state.errors.email}</p>
 
             <input
+              name="password"
               value={this.state.password}
               type="text"
-              onChange={this.handlePassword}
+              onChange={this.handleInputChange}
               placeholder="Enter Password"
               className="form-input"
             />
@@ -94,6 +92,6 @@ export default class Login extends Component {
           </h4>
         </div>
       </div>
-    );
+    )
   }
 }

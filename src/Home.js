@@ -1,8 +1,8 @@
-import React from "react";
-import "./home.scss";
+import React from "react"
+import "./home.scss"
 
-import Navbar from "./components/Navbar";
-import BookList from "./components/BookList";
+import Navbar from "./components/Navbar"
+import BookList from "./components/BookList"
 
 function Home() {
   return (
@@ -15,6 +15,6 @@ function Home() {
 
       <footer>Created By Shubham Jain</footer>
     </div>
-  );
+  )
 }
-export default Home;
+export default Home

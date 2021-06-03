@@ -1,5 +1,5 @@
-import { Component } from "react";
-import "./bookDetails.scss";
+import { Component } from "react"
+import "./bookDetails.scss"
 // import NavBar from "./components/Navbar";
 // import axios from "axios";
 
@@ -28,7 +28,7 @@ export default class BookDetail extends Component {
   //     });
   // };
   render() {
-    return "HELLO";
+    return "HELLO"
     // <div className="bookDetail">
     // <NavBar />
     //   <main className="main">
