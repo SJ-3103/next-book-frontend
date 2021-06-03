@@ -1,0 +1,47 @@
+.book {
+  margin-bottom: 2em;
+  width: fit-content;
+  background-color: #dbd7d7;
+}
+
+#title {
+  text-align: center;
+}
+
+.items {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.book-block {
+  display: flex;
+  flex-wrap: wrap;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  margin: 10px;
+  padding: 5px;
+  :hover {
+    background-color: white;
+  }
+  h3,
+  h4,
+  p {
+    text-align: left;
+  }
+  h3,
+  h4 {
+    max-width: 150px;
+  }
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}

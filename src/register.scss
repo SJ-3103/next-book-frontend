@@ -1,0 +1,45 @@
+.body-c {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(45deg, #49d49d 10%, #a2c7e5 90%);
+}
+#form-container {
+  width: max-content;
+  //   padding-left: 20px;
+  margin: 10vh auto;
+}
+#register-form {
+  //   border-style: solid;
+  //   border-width: 1px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  width: 100%;
+}
+.form-input {
+  width: 100%;
+  border: 0;
+  //   border-radius: 6px;
+  outline: 0;
+  padding: 20px 0px 20px 0px;
+  text-align: left;
+  &:focus {
+    background: darken(#fff, 3%);
+  }
+  &:hover {
+    background: darken(#fff, 3%);
+  }
+}
+#button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  outline: 0;
+  border: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #aba194;
+}
+h3 {
+  text-align: center;
+}
