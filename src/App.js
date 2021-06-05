@@ -15,7 +15,7 @@ export default class App extends Component {
         <Route path="/about" component={About}></Route>
         <Route path="/register" component={Register}></Route>
         <Route path="/login" component={Login}></Route>
-        <Route path="/book/:bookId/:bookSection" component={BookDetail}></Route>
+        <Route path="/book/:bookId/:bookName" component={BookDetail}></Route>
       </Switch>
     )
   }

@@ -77,12 +77,11 @@ class BookBlock extends Component {
   render() {
     return (
       <div className="book-block">
-        {/* {console.log(this.props)} */}
         <Link to={`/book/${this.props.id}/${this.props.title}`}>
           <div>
             <h3>Title : {this.state.title}</h3>
             <h4>Author : {this.state.author}</h4>
-            <p>Rating : {"Stars (" + this.state.average_rating + "/5)"}</p>
+            <p>Stars :</p>
           </div>
         </Link>
       </div>

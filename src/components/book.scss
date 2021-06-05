@@ -1,7 +1,7 @@
 .book {
   margin-bottom: 2em;
-  width: fit-content;
-  background-color: #dbd7d7;
+  width: 100%;
+  // background-color: white;
 }
 
 #title {
@@ -9,7 +9,8 @@
 }
 
 .items {
-  position: relative;
+  // position: relative;
+  background-color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,9 +25,6 @@
   border-style: solid;
   margin: 10px;
   padding: 5px;
-  :hover {
-    background-color: white;
-  }
   h3,
   h4,
   p {
@@ -44,4 +42,7 @@
     text-decoration: none;
     color: inherit;
   }
+}
+.book-block:hover {
+  background-color: #eee;
 }
