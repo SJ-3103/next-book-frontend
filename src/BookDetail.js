@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react"
 import "./bookDetails.scss"
 import NavBar from "./components/Navbar"
 import axios from "axios"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
 
 function BookDetail(props) {
   const bookId = props.match.params.bookId
   const [loading, setLoading] = useState(true)
   const [stateBookId] = useState(bookId)
   const [data, setData] = useState({})
+  let [arr, setArr] = useState([])
+
   useEffect(async () => {
     await axios
       .get("http://localhost:5000/api/detail", {
@@ -15,12 +19,17 @@ function BookDetail(props) {
           book_id: bookId
         }
       })
-      .then((response) => {
-        setData(response.data)
+      .then(({ data }) => {
+        let newarr = []
+        for (let i = 1; i <= data["average_rating"].toFixed(); i++) {
+          newarr.push(<FontAwesomeIcon key={i} icon={faStar} color="orange" />)
+        }
+        setArr(newarr)
+        setData(data)
         setLoading(false)
       })
       .catch((err) => {
-        console.log(err)
+        console.error(err)
       })
   }, [stateBookId])
 
@@ -34,7 +43,7 @@ function BookDetail(props) {
           <p>Number of pages : {data["num_pages"]}</p>
           <p>Publication Date : {data["publication_date"]}</p>
           <p>Publisher : {data["publisher"]}</p>
-          <p>Ratings : {data["average_rating"]}/5</p>
+          <p>Ratings : {arr}</p>
           <p>Language Code : {data["language_code"]}</p>
           <p>Total Ratings : {data["ratings_count"]}</p>
         </div>
