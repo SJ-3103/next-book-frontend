@@ -6,6 +6,7 @@ import About from "./About"
 import Register from "./Register"
 import Login from "./LogIn"
 import BookDetail from "./BookDetail"
+import SearchBooks from "./SearchBooks"
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route path="/register" component={Register}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/book/:bookId/:bookName" component={BookDetail}></Route>
+        <Route path="/nextbook" component={SearchBooks}></Route>
       </Switch>
     )
   }

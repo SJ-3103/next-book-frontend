@@ -1,7 +1,6 @@
 .book {
   margin-bottom: 2em;
   width: 100%;
-  // background-color: white;
 }
 
 #title {
@@ -9,7 +8,6 @@
 }
 
 .items {
-  // position: relative;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -17,32 +15,34 @@
   justify-content: space-around;
 }
 
-.book-block {
+.search-bar {
+  // background-color: red;
+  margin: 0% 10% 0% 10%;
   display: flex;
-  flex-wrap: wrap;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  margin: 10px;
-  padding: 5px;
-  h3,
-  h4,
-  p {
-    text-align: left;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  input {
+    margin: 10px;
+    height: 40px;
+    width: 900px;
+    border: black 1px solid;
+    border-radius: 5px;
   }
-  h3,
-  h4 {
-    max-width: 150px;
-  }
-  h4 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
+  button {
+    height: 40px;
+    width: 60px;
   }
 }
-.book-block:hover {
-  background-color: #eee;
+
+.expected-block {
+  h2 {
+    margin: 10px;
+    text-decoration: underline;
+  }
+  h4 {
+    border: black solid 1px;
+    padding: 10px;
+    margin: 10px;
+  }
 }

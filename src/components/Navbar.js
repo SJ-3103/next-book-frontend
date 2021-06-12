@@ -44,13 +44,13 @@ export default class Navbar extends Component {
         <nav className="navbar">
           <ul id="menu-left">
             <li>
-              <Link to="/">Logo</Link>
-            </li>
-            <li>
               <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <Link to="/nextbook">Next Book</Link>
             </li>
           </ul>
           <ul id="menu-right">
