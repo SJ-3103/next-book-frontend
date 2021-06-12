@@ -1,7 +1,7 @@
 import axios from "axios"
 
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import BookBlock from "./BookBlock"
 
 import "../components/book.scss"
 
@@ -51,7 +51,6 @@ export default class BookList extends Component {
                   title={data.title}
                   author={data.authors}
                   average_rating={data.average_rating}
-                  book_section={this.props.name}
                 />
               )
             })
@@ -59,31 +58,6 @@ export default class BookList extends Component {
             <div>Loading....</div>
           )}
         </div>
-      </div>
-    )
-  }
-}
-
-class BookBlock extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title: this.props.title,
-      author: this.props.author,
-      average_rating: this.props.average_rating,
-      class_name: this.props.class_name
-    }
-  }
-  render() {
-    return (
-      <div className="book-block">
-        <Link to={`/book/${this.props.id}/${this.props.title}`}>
-          <div>
-            <h3>Title : {this.state.title}</h3>
-            <h4>Author : {this.state.author}</h4>
-            <p>Stars :</p>
-          </div>
-        </Link>
       </div>
     )
   }
