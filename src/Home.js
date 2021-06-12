@@ -3,6 +3,7 @@ import "./home.scss"
 
 import Navbar from "./components/Navbar"
 import BookList from "./components/BookList"
+import Footer from "./components/Footer"
 
 function Home() {
   return (
@@ -12,8 +13,7 @@ function Home() {
       <BookList title="Most Rated Books" name="MostRated" />
       <BookList title="Best Selling Books" name="BestSelling" />
       <BookList title="New Arrivals" name="NewBooks" />
-
-      <footer>Created By Shubham Jain</footer>
+      <Footer />
     </div>
   )
 }
