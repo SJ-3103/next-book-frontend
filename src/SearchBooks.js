@@ -21,7 +21,7 @@ const SearchBooks = () => {
 
   async function my_func(value) {
     await axios
-      .get("http://localhost:5000/api/nextbook", {
+      .get("http://localhost:8000/api/nextbook", {
         params: {
           book_name: value
         }
@@ -83,7 +83,6 @@ const SearchBooks = () => {
   return (
     <div className="book">
       <Navbar />
-
       <div className="search-bar">
         Search here :
         <input

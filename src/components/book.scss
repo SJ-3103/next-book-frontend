@@ -17,11 +17,12 @@
 
 .search-bar {
   // background-color: red;
-  margin: 0% 10% 0% 10%;
+  // margin: 0% 10% 0% 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto;
+
   input {
     margin: 10px;
     height: 40px;
@@ -29,6 +30,7 @@
     border: black 1px solid;
     border-radius: 5px;
   }
+
   button {
     height: 40px;
     width: 60px;
@@ -40,6 +42,7 @@
     margin: 10px;
     text-decoration: underline;
   }
+
   h4 {
     border: black solid 1px;
     padding: 10px;

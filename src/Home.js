@@ -9,7 +9,6 @@ function Home() {
   return (
     <div className="body">
       <Navbar />
-
       <BookList title="Most Rated Books" name="MostRated" />
       <BookList title="Best Selling Books" name="BestSelling" />
       <BookList title="New Arrivals" name="NewBooks" />

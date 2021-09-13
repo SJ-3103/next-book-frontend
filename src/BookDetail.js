@@ -14,7 +14,7 @@ function BookDetail(props) {
 
   useEffect(async () => {
     await axios
-      .get("http://localhost:5000/api/detail", {
+      .get("http://localhost:8000/api/detail", {
         params: {
           book_id: bookId
         }

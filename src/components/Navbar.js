@@ -11,7 +11,7 @@ export default class Navbar extends Component {
 
   componentDidMount = () => {
     axios
-      .get("http://localhost:5000/api/login", { withCredentials: true })
+      .get("http://localhost:8000/api/login", { withCredentials: true })
       .then((response) => {
         console.log(response.data)
         response.data.cookie
@@ -28,7 +28,7 @@ export default class Navbar extends Component {
 
   handleLogout = async () => {
     await axios
-      .get("http://localhost:5000/api/logout", { withCredentials: true })
+      .get("http://localhost:8000/api/logout", { withCredentials: true })
       .then((data) => {
         console.log(data)
         this.setState({
