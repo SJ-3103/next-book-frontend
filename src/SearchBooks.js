@@ -21,13 +21,12 @@ const SearchBooks = () => {
 
   async function my_func(value) {
     await axios
-      .get("http://localhost:8000/api/nextbook", {
+      .get("/api/nextbook", {
         params: {
           book_name: value
         }
       })
       .then(({ data }) => {
-        // console.log(data)
         if (data["msg"] === "ok") {
           let keys = Object.keys(data["data"])
           let arr = []
@@ -58,7 +57,7 @@ const SearchBooks = () => {
         return (
           <div>
             <h2 id="title">
-              Recommended Books for{" "}
+              Recommended Books for : {" "}
               <Link to={`/book/${search_book_id}/${search_book_name}`}>
                 {search_book_name}
               </Link>
@@ -69,22 +68,25 @@ const SearchBooks = () => {
           </div>
         )
       } else {
-        return <div>Loading......</div>
+        return <div className="return">Loading......</div>
       }
     } else if (error_msg === "name error") {
       return <ExpectedBookBlock expected_data={expected_data} />
     } else if (error_msg === "name null error") {
-      return <div>Name cant be empty</div>
-    } else {
-      return <div>Search Your Next Book Above</div>
+      return <div className="return">Error: Name cant be empty</div>
+    } 
+    else {
+      return <div className="return">Search Your Next Book Above</div>
     }
   }
 
+
+
   return (
-    <div className="book">
+    <div>
       <Navbar />
       <div className="search-bar">
-        Search here :
+        <p>Search here :</p>
         <input
           type="text"
           onChange={(event) => {
@@ -97,8 +99,15 @@ const SearchBooks = () => {
             event.preventDefault()
             await my_func(value)
           }}
+          // onKeyDown={async (event) => {
+          //   if(event.key==='Enter'){
+          //     event.preventDefault()
+          //     await my_func(value)
+          //   }
+          //   console.log("enter is pressed")
+          // }}
         >
-          Enter
+          Search
         </button>
       </div>
 
@@ -131,10 +140,10 @@ const ExpectedBookBlock = (props) => {
       <h2>Error.....Search From Below Books</h2>
       {Object.keys(data).map((element) => {
         return (
-          <h4 key={data[element].index}>
+          <p key={data[element].index}>
             {data[element].name}
-            {console.log(data[element].name)}
-          </h4>
+            {console.log(data)}
+          </p>
         )
       })}
     </div>

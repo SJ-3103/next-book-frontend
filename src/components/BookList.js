@@ -16,7 +16,7 @@ export default class BookList extends Component {
 
   componentDidMount = async () => {
     await axios
-      .get("http://localhost:8000/api/" + this.props.name)
+      .get("/api/" + this.props.name)
 
       .then(({ data, keys, arr }) => {
         keys = Object.keys(data)

@@ -14,7 +14,7 @@ function BookDetail(props) {
 
   useEffect(async () => {
     await axios
-      .get("http://localhost:8000/api/detail", {
+      .get("/api/detail", {
         params: {
           book_id: bookId
         }
@@ -38,7 +38,7 @@ function BookDetail(props) {
       <NavBar />
       {!loading ? (
         <div className="book-detail">
-          <h2>Title : {data["title"]}</h2>
+          <h2>Book Title : {data["title"]}</h2>
           <p>Authors : {data["authors"]}</p>
           <p>Number of pages : {data["num_pages"]}</p>
           <p>Publication Date : {data["publication_date"]}</p>

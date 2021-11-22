@@ -1,20 +1,23 @@
 .navbar {
     background-color: #e7dede;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+
     ul {
         list-style-type: none;
+
         li {
             a {
                 display: block;
-                padding: 10px;
+                padding: 20px 10px;
                 text-decoration: none;
-                font-weight: bold;
-                color:black;
+                color: black;
+                font-size: large;
             }
+
             :hover {
-                background-color: #d9d9d9;
+                text-decoration: underline;
             }
         }
     }
@@ -24,9 +27,11 @@
 #menu-left {
     display: flex;
     width: fit-content;
+    padding-left: 50px;
 }
 
 #menu-right {
     display: flex;
     width: fit-content;
+    padding-right: 50px;
 }

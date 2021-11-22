@@ -40,7 +40,7 @@ export default class Register extends Component {
 
     axios
       .post(
-        "http://localhost:8000/api/register",
+        "/api/register",
         {
           first_name: this.state.firstName,
           last_name: this.state.lastName,

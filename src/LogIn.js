@@ -36,7 +36,7 @@ export default class Login extends Component {
 
     axios
       .post(
-        "http://localhost:8000/api/login",
+        "/api/login",
         {
           email_id: this.state.email,
           password: this.state.password

@@ -1,10 +1,14 @@
-.book {
-  margin-bottom: 2em;
-  width: 100%;
-}
-
 #title {
   text-align: center;
+
+  a {
+    color: #000;
+    text-decoration: underline;
+
+    ::after {
+      color: violet;
+    }
+  }
 }
 
 .items {
@@ -16,36 +20,56 @@
 }
 
 .search-bar {
-  // background-color: red;
-  // margin: 0% 10% 0% 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: auto;
 
+  p {
+    margin: 10px 0px 0px 30px;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
   input {
-    margin: 10px;
+    margin: 10px 0px 20px 30px;
     height: 40px;
     width: 900px;
     border: black 1px solid;
     border-radius: 5px;
+    font-size: larger;
   }
 
   button {
-    height: 40px;
-    width: 60px;
+    font-size: large;
+    padding: 10px 30px;
+    border-color: grey;
+    background-color: grey;
+    margin-left: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    color: white;
+  }
+
+  button:hover {
+    color: black;
+    border-color: gainsboro;
+    cursor: pointer;
   }
 }
 
 .expected-block {
   h2 {
-    margin: 10px;
-    text-decoration: underline;
+    color: red;
+    margin-left: 30px;
   }
 
-  h4 {
-    border: black solid 1px;
-    padding: 10px;
-    margin: 10px;
+  p {
+    // border: black solid 1px;
+    padding: 10px 0px;
+    margin-left: 30px;
   }
+}
+
+.return {
+  margin: 10px 0px 10px 30px;
+  font-size: large;
 }
