@@ -53,7 +53,7 @@ export default class Navbar extends Component {
               <Link to="/nextbook">Next Book</Link>
             </li>
           </ul>
-
+          <p>The Book Recommender Website</p>
           <ul id="menu-right">
             <li>
               <Link to="/register">Register</Link>

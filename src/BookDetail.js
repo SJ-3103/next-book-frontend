@@ -4,6 +4,7 @@ import NavBar from "./components/Navbar"
 import axios from "axios"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
+import Footer from "./components/Footer"
 
 function BookDetail(props) {
   const bookId = props.match.params.bookId
@@ -37,7 +38,7 @@ function BookDetail(props) {
     <div>
       <NavBar />
       {!loading ? (
-        <div className="book-detail">
+        <div className="book-detail" style={{height:"70vh"}}>
           <h2>Book Title : {data["title"]}</h2>
           <p>Authors : {data["authors"]}</p>
           <p>Number of pages : {data["num_pages"]}</p>
@@ -50,6 +51,7 @@ function BookDetail(props) {
       ) : (
         <div>Loading....</div>
       )}
+      <Footer/>
     </div>
   )
 }

@@ -2,7 +2,7 @@
     background-color: #e7dede;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: auto;
 
     ul {
         list-style-type: none;
@@ -22,16 +22,28 @@
         }
     }
 
+    p {
+        // background-color: salmon;
+        display: block;
+        padding: 20px 10px;
+        text-decoration: none;
+        color: black;
+        font-size: large;
+        width: max-content;
+        margin-right: 70px;
+    }
 }
 
 #menu-left {
     display: flex;
     width: fit-content;
     padding-left: 50px;
+    // background-color: rebeccapurple;
 }
 
 #menu-right {
     display: flex;
     width: fit-content;
     padding-right: 50px;
+    // background-color: royalblue;
 }
