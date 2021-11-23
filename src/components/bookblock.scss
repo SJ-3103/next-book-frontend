@@ -4,24 +4,31 @@
   border: 1px black solid;
   margin: 10px;
   padding: 5px;
+
   h3,
   h4,
   p {
     text-align: left;
   }
+
   h3,
   h4 {
     max-width: 200px;
   }
+
   h4 {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-style: italic;
+    font-weight: unset;
   }
+
   a {
     text-decoration: none;
     color: inherit;
   }
 }
+
 .book-block:hover {
   background-color: #eee;
 }
