@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom"
 import "./register.scss"
 import axios from "axios"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 export default class Register extends Component {
   constructor(props) {
@@ -67,61 +68,71 @@ export default class Register extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div className="body-c">
+      <div>
         <Navbar />
-        <div id="form-container">
-          <h3>Register</h3>
-          <form id="register-form" onSubmit={this.handleSubmit}>
-            <input
-              name="firstName"
-              value={this.state.firstName}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter First name"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.firstName}</p>
+        <div className="body-c">
 
-            <input
-              name="lastName"
-              value={this.state.lastName}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter Last name"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.lastName}</p>
+          <div id="form-container">
 
-            <input
-              name="emailId"
-              value={this.state.emailId}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter Email"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.email}</p>
+            <form onSubmit={this.handleSubmit}>
+              <h2>Register</h2>
+              <input
+                name="firstName"
+                value={this.state.firstName}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter First name"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.firstName}</p>
 
-            <input
-              name="password"
-              value={this.state.password}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter Password"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.password}</p>
+              <input
+                name="lastName"
+                value={this.state.lastName}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Last name"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.lastName}</p>
 
-            {/* for register button */}
-            <button id="button" type="submit" onClick={this.handleSubmit}>
-              Register
-            </button>
-          </form>
+              <input
+                name="emailId"
+                value={this.state.emailId}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Email"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.email}</p>
 
-          <h4>
-            Already have an account?<Link to="/login">Sign In here</Link>
-          </h4>
+              <input
+                name="password"
+                value={this.state.password}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Password"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.password}</p>
+
+              {/* for register button */}
+              <button id="button" type="submit" onClick={this.handleSubmit}>
+                Register
+              </button>
+              <h4>
+                Already have an account?<Link to="/login">Sign In here</Link>
+              </h4>
+            </form>
+
+            
+          </div>
+
+
+          <div id="side-image"></div>
+
         </div>
+        <Footer/>
       </div>
     )
   }

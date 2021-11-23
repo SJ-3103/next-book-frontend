@@ -1,45 +1,76 @@
 .body-c {
-  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(45deg, #49d49d 10%, #a2c7e5 90%);
+  display: flex;
 }
+
 #form-container {
   width: max-content;
-  //   padding-left: 20px;
-  margin: 10vh auto;
+  width: 45vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    font-size: larger;
+    padding: 10px 0px;
+    font-weight: unset;
+    width: 100%;
+  }
+
+  background-image: url("./images/side-login-image2.jpg");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
-#register-form {
-  //   border-style: solid;
-  //   border-width: 1px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  width: 100%;
+
+form {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
 }
+
 .form-input {
   width: 100%;
-  border: 0;
-  //   border-radius: 6px;
-  outline: 0;
-  padding: 20px 0px 20px 0px;
+  border: 1px black solid;
+  padding: 10px 0px 10px 0px;
   text-align: left;
+  margin: 10px 0px;
+  color: black;
+  font-size: medium;
+
   &:focus {
     background: darken(#fff, 3%);
   }
+
   &:hover {
     background: darken(#fff, 3%);
   }
 }
+
 #button {
   display: block;
   width: 100%;
-  padding: 20px;
+  padding: 10px 0px;
   outline: 0;
-  border: 0;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
   background-color: #aba194;
+  border: 1px black solid;
+  margin: 5px 0px;
+  color: black;
+  font-size: large;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
-h3 {
-  text-align: center;
+
+#side-image {
+  background-size: 700px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url("./images/side-login-image.png");
+  width: 55vw;
 }

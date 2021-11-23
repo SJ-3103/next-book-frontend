@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom"
 import "./register.scss"
 import axios from "axios"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 export default class Login extends Component {
   constructor(props) {
@@ -56,41 +57,49 @@ export default class Login extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div className="body-c">
+      <div>
         <Navbar />
-        <div id="form-container">
-          <h3>Login</h3>
-          <form id="register-form" onSubmit={this.handleSubmit}>
-            <input
-              name="email"
-              value={this.state.email}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter Email"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.email}</p>
 
-            <input
-              name="password"
-              value={this.state.password}
-              type="text"
-              onChange={this.handleInputChange}
-              placeholder="Enter Password"
-              className="form-input"
-            />
-            <p id="errors">{this.state.errors.password}</p>
+        <div className="body-c">
+          <div id="form-container">
+            <form id="register-form" onSubmit={this.handleSubmit}>
+        
+              <h2>Login</h2>
+              <input
+                name="email"
+                value={this.state.email}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Email"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.email}</p>
 
-            {/* for register button */}
-            <button id="button" type="submit" onClick={this.handleSubmit}>
-              Login
-            </button>
-          </form>
+              <input
+                name="password"
+                value={this.state.password}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Password"
+                className="form-input"
+              />
+              <p id="errors">{this.state.errors.password}</p>
 
-          <h4>
-            Doesn't have an account? <Link to="/register">Sign up here</Link>
-          </h4>
+              {/* for register button */}
+              <button id="button" type="submit" onClick={this.handleSubmit}>
+                Login
+              </button>
+              <h4>
+                Doesn't have an account? <Link to="/register">Sign up here</Link>
+              </h4>
+            </form>
+
+          </div>
+        
+          <div id="side-image"></div>
+        
         </div>
+        <Footer/>
       </div>
     )
   }
