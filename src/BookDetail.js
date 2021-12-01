@@ -13,25 +13,28 @@ function BookDetail(props) {
   const [data, setData] = useState({})
   let [arr, setArr] = useState([])
 
-  useEffect(async () => {
-    await axios
-      .get("/api/detail", {
-        params: {
-          book_id: bookId
-        }
-      })
-      .then(({ data }) => {
-        let newarr = []
-        for (let i = 1; i <= data["average_rating"].toFixed(); i++) {
-          newarr.push(<FontAwesomeIcon key={i} icon={faStar} color="orange" />)
-        }
-        setArr(newarr)
-        setData(data)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+  useEffect(()=>{
+    async function fetchData() {
+      await axios
+        .get("/api/detail", {
+          params: {
+            book_id: bookId
+          }
+        })
+        .then(({ data }) => {
+          let newarr = []
+          for (let i = 1; i <= data["average_rating"].toFixed(); i++) {
+            newarr.push(<FontAwesomeIcon key={i} icon={faStar} color="orange" />)
+          }
+          setArr(newarr)
+          setData(data)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
+    fetchData()
   }, [stateBookId])
 
   return (
