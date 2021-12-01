@@ -1,9 +1,16 @@
+.book {
+  margin: 20px 0px;
+}
+
 #title {
   text-align: center;
+  margin: 10px 0px;
+  font-weight: unset;
 
   a {
     color: #000;
     text-decoration: underline;
+    font-style: italic;
 
     ::after {
       color: violet;
@@ -21,6 +28,7 @@
 
 .search-bar {
   width: auto;
+  // height: 75vh;
 
   p {
     margin: 10px 0px 0px 30px;
