@@ -19,7 +19,7 @@ const SearchBooks = () => {
   const [expected_data, setExpectedData] = useState({})
   const [error_msg, setErrorMsg] = useState("")
 
-  async function my_func(value) {
+  async function getBooks(value) {
     await axios
       .get("/api/nextbook", {
         params: {
@@ -40,6 +40,7 @@ const SearchBooks = () => {
           setSearchBookName(data["search_book_name"])
           setSearchBookId(data["search_book_id"])
           setLoading(false)
+
         } else if (data["msg"] === "name error") {
           setErrorMsg(data["msg"])
           setExpectedData(data["expected"])
@@ -51,7 +52,7 @@ const SearchBooks = () => {
       .catch((err) => console.log(err))
   }
 
-  function my_show_function() {
+  function showBooks() {
     if (error_msg === "ok") {
       if (!loading) {
         return (
@@ -78,13 +79,12 @@ const SearchBooks = () => {
     else {
       return <div className="return">Search Your Next Book Above</div>
     }
-  }
-
-
+  }  
 
   return (
     <div>
       <Navbar />
+
       <div className="search-bar">
         <p>Search here :</p>
         <input
@@ -97,27 +97,29 @@ const SearchBooks = () => {
         <button
           onClick={async (event) => {
             event.preventDefault()
-            await my_func(value)
+
+            // get books from the model
+            await getBooks(value)
           }}
-          // onKeyDown={async (event) => {
-          //   if(event.key==='Enter'){
-          //     event.preventDefault()
-          //     await my_func(value)
-          //   }
-          //   console.log("enter is pressed")
-          // }}
+          onKeyPress={(event)=>{
+            console.log(event)
+          }}
         >
           Search
         </button>
+        
       </div>
 
-      {my_show_function()}
+        {/* show the books */}
+        {showBooks()}
 
       <Footer />
+    
     </div>
   )
 }
 
+// to  show book blocks
 const NextBookBlock = (props) => {
   const search_data = props.search_data
   return search_data.map((data) => {
@@ -133,6 +135,7 @@ const NextBookBlock = (props) => {
   })
 }
 
+// due to name error
 const ExpectedBookBlock = (props) => {
   const data = props.expected_data
   return (
