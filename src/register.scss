@@ -13,8 +13,8 @@
   h2 {
     text-align: center;
     font-size: larger;
-    padding: 10px 0px;
-    font-weight: unset;
+    padding: 5px 0px;
+    font-weight: 700;
     width: 100%;
   }
 
@@ -22,6 +22,16 @@
   background-size: 600px;
   background-repeat: no-repeat;
   background-position: 50%;
+
+  h3 {
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  #errors {
+    color: red;
+  }
+
 }
 
 form {
@@ -34,11 +44,11 @@ form {
 }
 
 .form-input {
-  width: 100%;
+  width: 285px;
   border: 1px black solid;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 10px;
   text-align: left;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
   color: black;
   font-size: medium;
 
@@ -52,18 +62,17 @@ form {
 }
 
 #button {
-  display: block;
-  width: 100%;
+  width: 297px;
   padding: 10px 0px;
-  outline: 0;
   background-color: #aba194;
   border: 1px black solid;
-  margin: 5px 0px;
+  margin-top: 10px;
   color: black;
   font-size: large;
 
   &:hover {
     cursor: pointer;
+    background-color: rgba(116, 125, 145, 0.356);
   }
 }
 
