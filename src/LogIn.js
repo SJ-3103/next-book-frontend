@@ -10,12 +10,10 @@ export default class Login extends Component {
     super(props)
     this.state = {
       redirect: null,
-      email: "",
-      password: "",
-      errors: {
-        email: "",
-        password: ""
-      }
+      email: '',
+      password: '',
+      email_error: '',
+      password_error: ''
     }
   }
 
@@ -27,29 +25,71 @@ export default class Login extends Component {
     })
   }
 
-  handleErrors = (errors) => {
-    // to extract errors in the state and apply forEach on it
-    console.log(errors)
+  handleErrors = async()=>{
+    // check email
+    if(this.state.email === '') {
+      this.setState({
+        email_error: "Email can't be empty"
+      })
+    }
+    else if(!new RegExp( /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(this.state.email)) {
+      this.setState({
+        email_error: "Enter a valid email."
+      })
+    }
+    else{
+      console.log("Email ok")
+      this.setState({
+        email_error: 'No error'
+      })
+    }
+
+    // check password
+    if(this.state.password === '') {
+      this.setState({
+        password_error: "Password can't be empty"
+      })
+    }
+    else if(!new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(this.state.password)) {
+      this.setState({
+        password_error: "Enter a valid password."
+      })
+    }
+    else{
+      console.log("Password ok")
+      this.setState({
+        password_error: 'No error'
+      })
+    }
+  }
+
+
+  loginUser = () =>{
+    axios
+        .post(
+          "/api/login",
+          {
+            email_id: this.state.email,
+            password: this.state.password
+          },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
 
-    axios
-      .post(
-        "/api/login",
-        {
-          email_id: this.state.email,
-          password: this.state.password
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    await this.handleErrors()
+    if(this.state.email_error === "No error" && this.state.password_error === "No error") {
+      console.log("Format is ok")
+    }
+    
   }
 
   render() {
@@ -65,6 +105,7 @@ export default class Login extends Component {
             <form id="register-form" onSubmit={this.handleSubmit}>
         
               <h2>Login</h2>
+              <h3>Email</h3>
               <input
                 name="email"
                 value={this.state.email}
@@ -73,8 +114,9 @@ export default class Login extends Component {
                 placeholder="Enter Email"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.email}</p>
-
+              {this.state.email_error !== "No error" ? <p id="errors">{this.state.email_error}</p> : <></>}
+              
+              <h3>Password</h3>
               <input
                 name="password"
                 value={this.state.password}
@@ -83,7 +125,7 @@ export default class Login extends Component {
                 placeholder="Enter Password"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.password}</p>
+              {this.state.password_error !== "No error" ? <p id="errors">{this.state.email_error}</p> : <></>}
 
               {/* for register button */}
               <button id="button" type="submit" onClick={this.handleSubmit}>
