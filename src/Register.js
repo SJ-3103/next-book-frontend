@@ -10,16 +10,15 @@ export default class Register extends Component {
     super(props)
     this.state = {
       redirect: null,
-      emailId: "",
+      email: "",
       password: "",
       firstName: "",
       lastName: "",
-      errors: {
-        email: "",
-        password: "",
-        lastName: "",
-        firstName: ""
-      }
+      email_error: "",
+      password_error: "",
+      lastName_error: "",
+      firstName_error: ""
+      
     }
   }
 
@@ -31,40 +30,111 @@ export default class Register extends Component {
     })
   }
 
-  handleErrors = (errors) => {
-    // to extract errors in the state and apply forEach on it
-    console.log(errors)
+  handleErrors = async() => {
+    // check first name
+    if(this.state.firstName === "") {
+      this.setState({
+        firstName_error: "First name can't be empty"
+      })
+    }
+    else if(this.state.firstName<=4) {
+      this.setState({
+        firstName_error: "First name must have atleast 5 letters."
+      })
+    }
+    else{
+      this.setState({
+        firstName_error: "No error"
+      })
+    }
+
+    // check last name
+    if(this.state.lastName === '') {
+      this.setState({
+        lastName_error: "Last name can't be empty"
+      })
+    }
+    else if(this.state.lastName<=4) {
+      this.setState({
+        lastName_error: "Last name must have atleast 5 letters."
+      })
+    }
+    else{
+      this.setState({
+        lastName_error: "No error"
+      })
+    }
+
+    // check email
+    if(this.state.email === '') {
+      this.setState({
+        email_error: "Email can't be empty"
+      })
+    }
+    else if(!new RegExp( /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(this.state.email)) {
+      this.setState({
+        email_error: "Enter a valid email."
+      })
+    }
+    else{
+      this.setState({
+        email_error: "No error"
+      })
+    }
+
+    // check password
+    if(this.state.password === '') {
+      this.setState({
+        password_error: "Password can't be empty"
+      })
+    }
+    else if(!new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(this.state.password)) {
+      this.setState({
+        password_error: "Enter a valid password."
+      })
+    }
+    else{
+      this.setState({
+        password_error: "No error"
+      })
+    }
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault()
-
+  register = async()=> {
     axios
       .post(
-        "/api/register",
-        {
+        "/api/register",{
           first_name: this.state.firstName,
           last_name: this.state.lastName,
-          email_id: this.state.emailId,
+          email_id: this.state.email,
           password: this.state.password
-        },
-        { withCredentials: true }
+        },{ withCredentials: true }
       )
       .then((response) => {
         // console.log(response.data);
         console.log(response)
-        this.setState({
-          redirect: "/"
-        })
+        // this.setState({
+        //   redirect: "/"
+        // })
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    await this.handleErrors()
+    
+    if(this.state.firstName_error === "No error" && this.state.lastName_error === "No error" && this.state.email_error === "No error" && this.state.password_error === "No error") {
+      console.log("Format ok")
+      await this.register()
+    }
+    
+  }
+
   render() {
     if (this.state.redirect) {
-      console.log(this.state.redirect)
       return <Redirect to={this.state.redirect} />
     }
     return (
@@ -76,6 +146,8 @@ export default class Register extends Component {
 
             <form onSubmit={this.handleSubmit}>
               <h2>Register</h2>
+              
+              <h3>First Name</h3>
               <input
                 name="firstName"
                 value={this.state.firstName}
@@ -84,8 +156,9 @@ export default class Register extends Component {
                 placeholder="Enter First name"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.firstName}</p>
+              {this.state.firstName_error !== "No error" ? <p id="errors">{this.state.firstName_error}</p> : <></>}
 
+              <h3>Last Name</h3>
               <input
                 name="lastName"
                 value={this.state.lastName}
@@ -94,18 +167,20 @@ export default class Register extends Component {
                 placeholder="Enter Last name"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.lastName}</p>
+              {this.state.lastName_error !== "No error" ? <p id="errors">{this.state.lastName_error}</p> : <></>}
 
+              <h3>Email</h3>
               <input
-                name="emailId"
-                value={this.state.emailId}
+                name="email"
+                value={this.state.email}
                 type="text"
                 onChange={this.handleInputChange}
                 placeholder="Enter Email"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.email}</p>
+              {this.state.email_error !== "No error" ? <p id="errors">{this.state.email_error}</p> : <></>}
 
+              <h3>Password</h3>
               <input
                 name="password"
                 value={this.state.password}
@@ -114,21 +189,19 @@ export default class Register extends Component {
                 placeholder="Enter Password"
                 className="form-input"
               />
-              <p id="errors">{this.state.errors.password}</p>
+              {this.state.password_error !== "No error" ? <p id="errors">{this.state.password_error}</p> : <></>}
 
               {/* for register button */}
               <button id="button" type="submit" onClick={this.handleSubmit}>
                 Register
               </button>
               <h4>
-                Already have an account?<Link to="/login">Sign In here</Link>
+                Already have an account?{" "}<Link to="/login">Sign In here</Link>
               </h4>
             </form>
 
-            
           </div>
-
-
+          
           <div id="side-image"></div>
 
         </div>
