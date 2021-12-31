@@ -14,14 +14,20 @@ export default class Navbar extends Component {
       .get("/api/login", { withCredentials: true })
       .then((response) => {
         console.log(response.data)
-        response.data.cookie
-          ? this.setState({
-              isLoggedIn: true,
-              username: response.data.email_id
-            })
-          : this.setState({
-              isLoggedIn: false
-            })
+
+        if(response.data.cookie) {
+          this.setState({
+            isLoggedIn: true,
+            username: response.data["email_id"]
+          })
+        }
+        else{
+          this.setState({
+            isLoggedIn: false,
+            username: null
+          })
+        }
+
       })
       .catch((errors) => console.log(errors))
   }
@@ -32,7 +38,8 @@ export default class Navbar extends Component {
       .then((data) => {
         console.log(data)
         this.setState({
-          isLoggedIn: false
+          isLoggedIn: false,
+          username: null
         })
       })
       .catch((errors) => console.log(errors))
@@ -47,7 +54,7 @@ export default class Navbar extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About Us</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <Link to="/nextbook">Next Book</Link>
@@ -63,13 +70,12 @@ export default class Navbar extends Component {
                 <Link to="/login">Sign In</Link>
               </li>
             ) : (
-                <>
-                  <li>{this.state.username}</li>
+              <div>
+                <li>{this.state.username}</li>
                 <li onClick={this.handleLogout}>
                   <Link>Logout</Link>
                 </li>
-                </>
-                
+              </div> 
             )}
           </ul>
         </nav>
