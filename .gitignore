@@ -28,6 +28,3 @@ yarn-error.log*
 .vscode
 README.md
 .prettierrc
-
-.lite_project.lua
-gitdiff.lua
