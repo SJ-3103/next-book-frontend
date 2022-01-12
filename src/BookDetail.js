@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import "./bookDetails.scss"
+import "./styles/bookDetails.scss"
 import NavBar from "./components/Navbar"
 import axios from "axios"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

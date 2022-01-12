@@ -3,7 +3,7 @@ import axios from "axios"
 import React, { Component } from "react"
 import BookBlock from "./BookBlock"
 
-import "../components/book.scss"
+import "../styles/book.scss"
 
 export default class BookList extends Component {
   constructor(props) {

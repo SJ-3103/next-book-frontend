@@ -1,24 +1,25 @@
 import React, { Component } from "react"
+import { Redirect} from "react-router-dom"
 import { Link } from "react-router-dom"
-import "./navbar.scss"
+import "../styles/navbar.scss"
 import axios from "axios"
 
 export default class Navbar extends Component {
   state = {
     isLoggedIn: false,
-    username: null
+    username: null,
+    redirect:null
   }
 
   componentDidMount = () => {
     axios
       .get("/api/login", { withCredentials: true })
       .then((response) => {
-        console.log(response.data)
-
         if(response.data.cookie) {
           this.setState({
             isLoggedIn: true,
-            username: response.data["email_id"]
+            username: response.data["email_id"],
+            redirect: "/"
           })
         }
         else{
@@ -46,6 +47,10 @@ export default class Navbar extends Component {
   }
 
   render() {
+    if(this.state.redirect === '/'){
+      <Redirect to={this.state.redirect} />
+      return
+    }
     return (
       <header>
         <nav className="navbar">
@@ -73,7 +78,7 @@ export default class Navbar extends Component {
               <div>
                 <li>{this.state.username}</li>
                 <li onClick={this.handleLogout}>
-                  <Link>Logout</Link>
+                  <Link to="/logout">Logout</Link>
                 </li>
               </div> 
             )}

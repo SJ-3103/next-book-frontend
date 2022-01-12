@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "./bookblock.scss"
+import "../styles/bookblock.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 

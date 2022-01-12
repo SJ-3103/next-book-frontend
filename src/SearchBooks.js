@@ -6,7 +6,7 @@ import axios from "axios"
 import Navbar from "./components/Navbar"
 import BookBlock from "./components/BookBlock"
 import Footer from "./components/Footer"
-import "./components/book.scss"
+import "./styles/book.scss"
 
 const SearchBooks = () => {
   const [value, setValue] = useState("")

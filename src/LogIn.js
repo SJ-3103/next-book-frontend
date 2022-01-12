@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Redirect, Link } from "react-router-dom"
-import "./register.scss"
+import "./styles/register.scss"
 import axios from "axios"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
