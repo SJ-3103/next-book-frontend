@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Redirect} from "react-router-dom"
 import { Link } from "react-router-dom"
 import "../styles/navbar.scss"
 import axios from "axios"
@@ -7,19 +6,17 @@ import axios from "axios"
 export default class Navbar extends Component {
   state = {
     isLoggedIn: false,
-    username: null,
-    redirect:null
+    username: null
   }
 
   componentDidMount = () => {
     axios
       .get("/api/login", { withCredentials: true })
-      .then((response) => {
-        if(response.data.cookie) {
+      .then(({data}) => {
+        if(data.cookie) {
           this.setState({
             isLoggedIn: true,
-            username: response.data["email_id"],
-            redirect: "/"
+            username: data["email_id"]
           })
         }
         else{
@@ -36,21 +33,18 @@ export default class Navbar extends Component {
   handleLogout = async () => {
     await axios
       .get("/api/logout", { withCredentials: true })
-      .then((data) => {
-        console.log(data)
-        this.setState({
-          isLoggedIn: false,
-          username: null
-        })
+      .then(({data}) => {
+        if(!data.cookie){
+          this.setState({
+            isLoggedIn: false,
+            username: null
+          })
+        }
       })
       .catch((errors) => console.log(errors))
   }
 
   render() {
-    if(this.state.redirect === '/'){
-      <Redirect to={this.state.redirect} />
-      return
-    }
     return (
       <header>
         <nav className="navbar">
@@ -67,18 +61,22 @@ export default class Navbar extends Component {
           </ul>
           <p>The Book Recommender Website</p>
           <ul id="menu-right">
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
             {!this.state.isLoggedIn ? (
-              <li>
-                <Link to="/login">Sign In</Link>
-              </li>
-            ) : (
               <div>
-                <li>{this.state.username}</li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+                <li>
+                  <Link to="/login">Sign In</Link>
+                </li>
+              </div>
+            ) : (
+              <div id="username">
+                <li>
+                  {this.state.username}
+                </li>
                 <li onClick={this.handleLogout}>
-                  <Link to="/logout">Logout</Link>
+                  Logout
                 </li>
               </div> 
             )}
