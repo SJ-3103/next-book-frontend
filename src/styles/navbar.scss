@@ -23,7 +23,6 @@
     }
 
     p {
-        // background-color: salmon;
         display: block;
         padding: 20px 10px;
         text-decoration: none;
@@ -38,12 +37,24 @@
     display: flex;
     width: fit-content;
     padding-left: 50px;
-    // background-color: rebeccapurple;
 }
 
 #menu-right div {
     display: flex;
-
-    // width: fit-content;
     padding-right: 50px;
+}
+
+#username {
+    li {
+        display: block;
+        padding: 20px 10px;
+        text-decoration: none;
+        color: black;
+        font-size: large;
+    }
+
+    :hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
