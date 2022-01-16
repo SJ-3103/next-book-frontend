@@ -67,15 +67,19 @@ export default class Login extends Component {
   loginUser = () =>{
     axios
         .post(
-          "/api/login",
-          {
+          "/api/login",{
             email_id: this.state.email,
             password: this.state.password
           },
           { withCredentials: true }
         )
-        .then((response) => {
-          console.log(response)
+        .then(({data}) => {
+          console.log(data)
+          if(data.cookie){
+            this.setState({
+              redirect:'/'
+            })
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -88,13 +92,28 @@ export default class Login extends Component {
     await this.handleErrors()
     if(this.state.email_error === "No error" && this.state.password_error === "No error") {
       console.log("Format is ok")
+      await this.loginUser()
     }
     
   }
 
+  componentDidMount(){
+    axios.get('/api/login',{withCredentials:true})
+      .then(({data})=>{
+        if(data.cookie){
+          this.setState({
+            redirect:'/'
+          })
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+  }
+
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />
+    if(this.state.redirect==='/'){
+      return <Redirect to='/'/>
     }
     return (
       <div>

@@ -110,12 +110,12 @@ export default class Register extends Component {
           password: this.state.password
         },{ withCredentials: true }
       )
-      .then((response) => {
-        // console.log(response.data);
-        console.log(response)
-        // this.setState({
-        //   redirect: "/"
-        // })
+      .then(({data}) => {
+        if(data.cookie){
+          this.setState({
+            redirect:'/'
+          })
+        }
       })
       .catch((err) => {
         console.log(err)
@@ -133,9 +133,23 @@ export default class Register extends Component {
     
   }
 
+  componentDidMount(){
+    axios.get('/api/login',{withCredentials:true})
+      .then(({data})=>{
+        if(data.cookie){
+          this.setState({
+            redirect:'/'
+          })
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+  }
+
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />
+    if(this.state.redirect ==='/'){
+      return <Redirect to="/" />
     }
     return (
       <div>
